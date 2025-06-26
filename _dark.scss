@@ -1,0 +1,50 @@
+// Dark Theme
+// CSS custom properties for dark mode
+
+.dark {
+  // Background colors
+  --background: #{map-get($dark-theme, background)};
+  --foreground: #{map-get($dark-theme, foreground)};
+  
+  // Surface colors
+  --card: #{map-get($dark-theme, card)};
+  --card-foreground: #{map-get($dark-theme, card-foreground)};
+  --popover: #{map-get($dark-theme, popover)};
+  --popover-foreground: #{map-get($dark-theme, popover-foreground)};
+  
+  // Primary colors
+  --primary: #{map-get($dark-theme, primary)};
+  --primary-foreground: #{map-get($dark-theme, primary-foreground)};
+  
+  // Secondary colors
+  --secondary: #{map-get($dark-theme, secondary)};
+  --secondary-foreground: #{map-get($dark-theme, secondary-foreground)};
+  
+  // Muted colors
+  --muted: #{map-get($dark-theme, muted)};
+  --muted-foreground: #{map-get($dark-theme, muted-foreground)};
+  
+  // Accent colors
+  --accent: #{map-get($dark-theme, accent)};
+  --accent-foreground: #{map-get($dark-theme, accent-foreground)};
+  
+  // Destructive colors
+  --destructive: #{map-get($dark-theme, destructive)};
+  --destructive-foreground: #{map-get($dark-theme, destructive-foreground)};
+  
+  // Border and input colors
+  --border: #{map-get($dark-theme, border)};
+  --input: #{map-get($dark-theme, input)};
+  --ring: #{map-get($dark-theme, ring)};
+  
+  // Status colors
+  --success: #{map-get($dark-theme, success)};
+  --success-foreground: #{map-get($dark-theme, success-foreground)};
+  --warning: #{map-get($dark-theme, warning)};
+  --warning-foreground: #{map-get($dark-theme, warning-foreground)};
+  --error: #{map-get($dark-theme, error)};
+  --error-foreground: #{map-get($dark-theme, error-foreground)};
+  --info: #{map-get($dark-theme, info)};
+  --info-foreground: #{map-get($dark-theme, info-foreground)};
+}
+

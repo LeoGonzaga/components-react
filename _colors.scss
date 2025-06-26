@@ -1,0 +1,166 @@
+// Design Tokens - Colors
+// Inspired by shadcn/ui with modern color palette
+
+// Base colors using OKLCH for better perceptual uniformity
+$colors: (
+  // Neutral colors
+  white: oklch(1 0 0),
+  black: oklch(0.145 0 0),
+  // Gray scale
+  gray-50: oklch(0.985 0 0),
+  gray-100: oklch(0.97 0 0),
+  gray-200: oklch(0.922 0 0),
+  gray-300: oklch(0.856 0 0),
+  gray-400: oklch(0.708 0 0),
+  gray-500: oklch(0.556 0 0),
+  gray-600: oklch(0.445 0 0),
+  gray-700: oklch(0.334 0 0),
+  gray-800: oklch(0.269 0 0),
+  gray-900: oklch(0.205 0 0),
+  gray-950: oklch(0.145 0 0),
+  // Primary colors (blue)
+  primary-50: oklch(0.97 0.013 238.75),
+  primary-100: oklch(0.929 0.026 240.01),
+  primary-200: oklch(0.885 0.054 241.45),
+  primary-300: oklch(0.818 0.098 243.83),
+  primary-400: oklch(0.735 0.155 246.06),
+  primary-500: oklch(0.656 0.197 247.86),
+  primary-600: oklch(0.57 0.201 251.29),
+  primary-700: oklch(0.478 0.166 255.57),
+  primary-800: oklch(0.407 0.122 260.75),
+  primary-900: oklch(0.367 0.09 266.33),
+  primary-950: oklch(0.242 0.06 270.73),
+  // Success colors (green)
+  success-50: oklch(0.971 0.013 142.5),
+  success-100: oklch(0.936 0.027 141.5),
+  success-200: oklch(0.885 0.055 145),
+  success-300: oklch(0.805 0.1 150),
+  success-400: oklch(0.694 0.15 155),
+  success-500: oklch(0.599 0.177 160),
+  success-600: oklch(0.506 0.177 162.5),
+  success-700: oklch(0.424 0.155 164),
+  success-800: oklch(0.365 0.12 166),
+  success-900: oklch(0.318 0.09 167.5),
+  success-950: oklch(0.18 0.055 169),
+  // Warning colors (yellow/orange)
+  warning-50: oklch(0.985 0.024 85.87),
+  warning-100: oklch(0.971 0.05 85.87),
+  warning-200: oklch(0.942 0.1 85.87),
+  warning-300: oklch(0.898 0.15 85.87),
+  warning-400: oklch(0.828 0.189 84.429),
+  warning-500: oklch(0.769 0.188 70.08),
+  warning-600: oklch(0.695 0.18 55),
+  warning-700: oklch(0.577 0.15 45),
+  warning-800: oklch(0.484 0.12 40),
+  warning-900: oklch(0.424 0.1 35),
+  warning-950: oklch(0.242 0.06 30),
+  // Error colors (red)
+  error-50: oklch(0.971 0.013 17.38),
+  error-100: oklch(0.936 0.032 17.38),
+  error-200: oklch(0.885 0.063 19.109),
+  error-300: oklch(0.808 0.12 21.555),
+  error-400: oklch(0.704 0.191 22.216),
+  error-500: oklch(0.577 0.245 27.325),
+  error-600: oklch(0.506 0.24 27.325),
+  error-700: oklch(0.424 0.205 27.325),
+  error-800: oklch(0.365 0.16 27.325),
+  error-900: oklch(0.318 0.12 27.325),
+  error-950: oklch(0.18 0.08 27.325),
+  // Info colors (cyan)
+  info-50: oklch(0.97 0.013 194.769),
+  info-100: oklch(0.929 0.026 196.538),
+  info-200: oklch(0.885 0.054 198.307),
+  info-300: oklch(0.818 0.098 200.076),
+  info-400: oklch(0.735 0.155 201.845),
+  info-500: oklch(0.6 0.118 184.704),
+  info-600: oklch(0.52 0.12 185),
+  info-700: oklch(0.44 0.1 186),
+  info-800: oklch(0.38 0.08 187),
+  info-900: oklch(0.32 0.06 188),
+  info-950: oklch(0.22 0.04 189)
+);
+
+// Function to get color value
+@function color($name) {
+  @return map-get($colors, $name);
+}
+
+// Semantic color mappings for light theme
+$light-theme: (
+  // Background colors
+  background: color(white),
+  foreground: color(gray-950),
+  // Surface colors
+  card: color(white),
+  card-foreground: color(gray-950),
+  popover: color(white),
+  popover-foreground: color(gray-950),
+  // Primary colors
+  primary: color(gray-900),
+  primary-foreground: color(gray-50),
+  // Secondary colors
+  secondary: color(gray-100),
+  secondary-foreground: color(gray-900),
+  // Muted colors
+  muted: color(gray-100),
+  muted-foreground: color(gray-500),
+  // Accent colors
+  accent: color(gray-100),
+  accent-foreground: color(gray-900),
+  // Destructive colors
+  destructive: color(error-500),
+  destructive-foreground: color(white),
+  // Border and input colors
+  border: color(gray-200),
+  input: color(gray-200),
+  ring: color(gray-400),
+  // Status colors
+  success: color(success-500),
+  success-foreground: color(white),
+  warning: color(warning-500),
+  warning-foreground: color(white),
+  error: color(error-500),
+  error-foreground: color(white),
+  info: color(info-500),
+  info-foreground: color(white)
+);
+
+// Semantic color mappings for dark theme
+$dark-theme: (
+  // Background colors
+  background: color(gray-950),
+  foreground: color(gray-50),
+  // Surface colors
+  card: color(gray-900),
+  card-foreground: color(gray-50),
+  popover: color(gray-900),
+  popover-foreground: color(gray-50),
+  // Primary colors
+  primary: color(gray-200),
+  primary-foreground: color(gray-900),
+  // Secondary colors
+  secondary: color(gray-800),
+  secondary-foreground: color(gray-50),
+  // Muted colors
+  muted: color(gray-800),
+  muted-foreground: color(gray-400),
+  // Accent colors
+  accent: color(gray-800),
+  accent-foreground: color(gray-50),
+  // Destructive colors
+  destructive: color(error-400),
+  destructive-foreground: color(white),
+  // Border and input colors
+  border: oklch(1 0 0 / 10%),
+  input: oklch(1 0 0 / 15%),
+  ring: color(gray-500),
+  // Status colors
+  success: color(success-400),
+  success-foreground: color(gray-900),
+  warning: color(warning-400),
+  warning-foreground: color(gray-900),
+  error: color(error-400),
+  error-foreground: color(gray-900),
+  info: color(info-400),
+  info-foreground: color(gray-900)
+);

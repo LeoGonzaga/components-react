@@ -1,0 +1,184 @@
+// Import our custom SCSS design system
+@import './styles/main.scss';
+
+// App-specific styles
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  border-bottom: 1px solid var(--border);
+  background-color: var(--background);
+  position: sticky;
+  top: 0;
+  z-index: z-index(sticky);
+  backdrop-filter: blur(8px);
+  
+  .container {
+    padding: spacing(4) spacing(6);
+  }
+}
+
+.app-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: spacing(12);
+  height: spacing(12);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: var(--primary-foreground);
+}
+
+.app-title {
+  margin: 0;
+  @include text-2xl;
+  font-weight: font-weight(bold);
+}
+
+.app-main {
+  flex: 1;
+  padding: spacing(8) 0;
+}
+
+.app-footer {
+  border-top: 1px solid var(--border);
+  background-color: var(--muted);
+  
+  .container {
+    padding: spacing(6);
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 spacing(4);
+  
+  @include media-up(md) {
+    padding: 0 spacing(6);
+  }
+}
+
+// Hero section
+.hero {
+  text-align: center;
+  padding: spacing(16) 0;
+  margin-bottom: spacing(16);
+  
+  @include media-up(md) {
+    padding: spacing(24) 0;
+  }
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  margin-bottom: spacing(6);
+  background: linear-gradient(135deg, var(--foreground), var(--muted-foreground));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-description {
+  margin-bottom: spacing(8);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-actions {
+  display: flex;
+  gap: spacing(4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+// Demo sections
+.demo-section {
+  margin-bottom: spacing(16);
+  
+  &__header {
+    margin-bottom: spacing(8);
+    text-align: center;
+    
+    @include media-up(md) {
+      text-align: left;
+    }
+  }
+  
+  &__content {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: spacing(8);
+    
+    @include media-up(md) {
+      padding: spacing(12);
+    }
+  }
+}
+
+// Grid utilities
+.grid {
+  display: grid;
+  
+  &.gap-3 { gap: spacing(3); }
+  &.gap-4 { gap: spacing(4); }
+  &.gap-6 { gap: spacing(6); }
+  
+  &.md\\:grid-cols-2 {
+    @include media-up(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  &.lg\\:grid-cols-3 {
+    @include media-up(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+.max-w-md {
+  max-width: 28rem;
+}
+
+// Responsive utilities
+@include media-down(sm) {
+  .hero-title {
+    @include text-3xl;
+  }
+  
+  .hero-description {
+    @include text-base;
+  }
+  
+  .demo-section__content {
+    padding: spacing(6);
+  }
+  
+  .container {
+    padding: 0 spacing(3);
+  }
+}
+
+// Dark mode enhancements
+.dark {
+  .app-logo {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+  }
+  
+  .hero-title {
+    background: linear-gradient(135deg, var(--foreground), var(--muted-foreground));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}

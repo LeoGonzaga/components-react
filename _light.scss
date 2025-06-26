@@ -1,0 +1,56 @@
+// Light Theme
+// CSS custom properties for light mode
+
+:root {
+  // Border radius
+  --radius: #{radius(lg)};
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  // Background colors
+  --background: #{map-get($light-theme, background)};
+  --foreground: #{map-get($light-theme, foreground)};
+
+  // Surface colors
+  --card: #{map-get($light-theme, card)};
+  --card-foreground: #{map-get($light-theme, card-foreground)};
+  --popover: #{map-get($light-theme, popover)};
+  --popover-foreground: #{map-get($light-theme, popover-foreground)};
+
+  // Primary colors
+  --primary: #{map-get($light-theme, primary)};
+  --primary-foreground: #{map-get($light-theme, primary-foreground)};
+
+  // Secondary colors
+  --secondary: #{map-get($light-theme, secondary)};
+  --secondary-foreground: #{map-get($light-theme, secondary-foreground)};
+
+  // Muted colors
+  --muted: #{map-get($light-theme, muted)};
+  --muted-foreground: #{map-get($light-theme, muted-foreground)};
+
+  // Accent colors
+  --accent: #{map-get($light-theme, accent)};
+  --accent-foreground: #{map-get($light-theme, accent-foreground)};
+
+  // Destructive colors
+  --destructive: #{map-get($light-theme, destructive)};
+  --destructive-foreground: #{map-get($light-theme, destructive-foreground)};
+
+  // Border and input colors
+  --border: #{map-get($light-theme, border)};
+  --input: #{map-get($light-theme, input)};
+  --ring: #{map-get($light-theme, ring)};
+
+  // Status colors
+  --success: #{map-get($light-theme, success)};
+  --success-foreground: #{map-get($light-theme, success-foreground)};
+  --warning: #{map-get($light-theme, warning)};
+  --warning-foreground: #{map-get($light-theme, warning-foreground)};
+  --error: #{map-get($light-theme, error)};
+  --error-foreground: #{map-get($light-theme, error-foreground)};
+  --info: #{map-get($light-theme, info)};
+  --info-foreground: #{map-get($light-theme, info-foreground)};
+}

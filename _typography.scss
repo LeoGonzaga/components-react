@@ -1,0 +1,285 @@
+// Design Tokens - Typography
+// Modern typography scale with excellent readability
+
+// Font families
+$font-families: (
+  sans: (
+    'Inter',
+    'system-ui',
+    '-apple-system',
+    'BlinkMacSystemFont',
+    'Segoe UI',
+    'Roboto',
+    'Helvetica Neue',
+    'Arial',
+    'Noto Sans',
+    'sans-serif',
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji'
+  ),
+  serif: (
+    'ui-serif',
+    'Georgia',
+    'Cambria',
+    'Times New Roman',
+    'Times',
+    'serif'
+  ),
+  mono: (
+    'ui-monospace',
+    'SFMono-Regular',
+    'Monaco',
+    'Consolas',
+    'Liberation Mono',
+    'Courier New',
+    'monospace'
+  )
+);
+
+// Function to get font family
+@function font-family($type) {
+  @return map-get($font-families, $type);
+}
+
+// Font sizes with corresponding line heights
+$font-sizes: (
+  xs: (
+    size: 0.75rem,    // 12px
+    line-height: 1rem // 16px
+  ),
+  sm: (
+    size: 0.875rem,   // 14px
+    line-height: 1.25rem // 20px
+  ),
+  base: (
+    size: 1rem,       // 16px
+    line-height: 1.5rem // 24px
+  ),
+  lg: (
+    size: 1.125rem,   // 18px
+    line-height: 1.75rem // 28px
+  ),
+  xl: (
+    size: 1.25rem,    // 20px
+    line-height: 1.75rem // 28px
+  ),
+  2xl: (
+    size: 1.5rem,     // 24px
+    line-height: 2rem // 32px
+  ),
+  3xl: (
+    size: 1.875rem,   // 30px
+    line-height: 2.25rem // 36px
+  ),
+  4xl: (
+    size: 2.25rem,    // 36px
+    line-height: 2.5rem // 40px
+  ),
+  5xl: (
+    size: 3rem,       // 48px
+    line-height: 1
+  ),
+  6xl: (
+    size: 3.75rem,    // 60px
+    line-height: 1
+  ),
+  7xl: (
+    size: 4.5rem,     // 72px
+    line-height: 1
+  ),
+  8xl: (
+    size: 6rem,       // 96px
+    line-height: 1
+  ),
+  9xl: (
+    size: 8rem,       // 128px
+    line-height: 1
+  )
+);
+
+// Function to get font size
+@function font-size($size) {
+  @return map-get(map-get($font-sizes, $size), size);
+}
+
+// Function to get line height
+@function line-height($size) {
+  @return map-get(map-get($font-sizes, $size), line-height);
+}
+
+// Font weights
+$font-weights: (
+  thin: 100,
+  extralight: 200,
+  light: 300,
+  normal: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  extrabold: 800,
+  black: 900
+);
+
+// Function to get font weight
+@function font-weight($weight) {
+  @return map-get($font-weights, $weight);
+}
+
+// Letter spacing scale
+$letter-spacing: (
+  tighter: -0.05em,
+  tight: -0.025em,
+  normal: 0em,
+  wide: 0.025em,
+  wider: 0.05em,
+  widest: 0.1em
+);
+
+// Function to get letter spacing
+@function letter-spacing($spacing) {
+  @return map-get($letter-spacing, $spacing);
+}
+
+// Typography mixins for common text styles
+@mixin text-xs {
+  font-size: font-size(xs);
+  line-height: line-height(xs);
+}
+
+@mixin text-sm {
+  font-size: font-size(sm);
+  line-height: line-height(sm);
+}
+
+@mixin text-base {
+  font-size: font-size(base);
+  line-height: line-height(base);
+}
+
+@mixin text-lg {
+  font-size: font-size(lg);
+  line-height: line-height(lg);
+}
+
+@mixin text-xl {
+  font-size: font-size(xl);
+  line-height: line-height(xl);
+}
+
+@mixin text-2xl {
+  font-size: font-size(2xl);
+  line-height: line-height(2xl);
+}
+
+@mixin text-3xl {
+  font-size: font-size(3xl);
+  line-height: line-height(3xl);
+}
+
+@mixin text-4xl {
+  font-size: font-size(4xl);
+  line-height: line-height(4xl);
+}
+
+@mixin text-5xl {
+  font-size: font-size(5xl);
+  line-height: line-height(5xl);
+}
+
+// Heading mixins
+@mixin heading-1 {
+  @include text-4xl;
+  font-weight: font-weight(bold);
+  letter-spacing: letter-spacing(tight);
+  
+  @include media-up(md) {
+    @include text-5xl;
+  }
+}
+
+@mixin heading-2 {
+  @include text-3xl;
+  font-weight: font-weight(semibold);
+  letter-spacing: letter-spacing(tight);
+  
+  @include media-up(md) {
+    @include text-4xl;
+  }
+}
+
+@mixin heading-3 {
+  @include text-2xl;
+  font-weight: font-weight(semibold);
+  letter-spacing: letter-spacing(tight);
+  
+  @include media-up(md) {
+    @include text-3xl;
+  }
+}
+
+@mixin heading-4 {
+  @include text-xl;
+  font-weight: font-weight(semibold);
+  letter-spacing: letter-spacing(tight);
+  
+  @include media-up(md) {
+    @include text-2xl;
+  }
+}
+
+@mixin heading-5 {
+  @include text-lg;
+  font-weight: font-weight(semibold);
+  
+  @include media-up(md) {
+    @include text-xl;
+  }
+}
+
+@mixin heading-6 {
+  @include text-base;
+  font-weight: font-weight(semibold);
+  
+  @include media-up(md) {
+    @include text-lg;
+  }
+}
+
+// Body text mixins
+@mixin body-large {
+  @include text-lg;
+  font-weight: font-weight(normal);
+}
+
+@mixin body-base {
+  @include text-base;
+  font-weight: font-weight(normal);
+}
+
+@mixin body-small {
+  @include text-sm;
+  font-weight: font-weight(normal);
+}
+
+// Caption and label mixins
+@mixin caption {
+  @include text-xs;
+  font-weight: font-weight(medium);
+  letter-spacing: letter-spacing(wide);
+  text-transform: uppercase;
+}
+
+@mixin label {
+  @include text-sm;
+  font-weight: font-weight(medium);
+}
+
+// Code text mixin
+@mixin code {
+  font-family: font-family(mono);
+  @include text-sm;
+  font-weight: font-weight(normal);
+}
+

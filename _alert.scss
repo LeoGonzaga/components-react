@@ -1,0 +1,260 @@
+// Alert Component Styles
+// Accessible, informative alert messages
+
+.ui-alert {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: spacing(3);
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: spacing(4);
+  @include text-sm;
+  @include transition-colors;
+  
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: spacing(0.5);
+  }
+  
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  &__title {
+    margin: 0 0 spacing(1) 0;
+    font-weight: font-weight(medium);
+    @include text-sm;
+    line-height: 1.4;
+  }
+  
+  &__description {
+    margin: 0;
+    line-height: 1.5;
+    
+    // If there's no title, remove top margin
+    .ui-alert__title + & {
+      margin-top: 0;
+    }
+  }
+  
+  &__dismiss {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: spacing(5);
+    height: spacing(5);
+    border: none;
+    background: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    @include transition-colors;
+    @include focus-ring;
+    
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    .dark & {
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+  
+  // Variant styles
+  &--default {
+    background-color: var(--background);
+    color: var(--foreground);
+    border-color: var(--border);
+    
+    .ui-alert__icon {
+      color: var(--foreground);
+    }
+  }
+  
+  &--success {
+    background-color: color(success-50);
+    color: color(success-900);
+    border-color: color(success-200);
+    
+    .ui-alert__icon {
+      color: var(--success);
+    }
+    
+    .dark & {
+      background-color: color(success-950);
+      color: color(success-100);
+      border-color: color(success-800);
+    }
+  }
+  
+  &--warning {
+    background-color: color(warning-50);
+    color: color(warning-900);
+    border-color: color(warning-200);
+    
+    .ui-alert__icon {
+      color: var(--warning);
+    }
+    
+    .dark & {
+      background-color: color(warning-950);
+      color: color(warning-100);
+      border-color: color(warning-800);
+    }
+  }
+  
+  &--error,
+  &--destructive {
+    background-color: color(error-50);
+    color: color(error-900);
+    border-color: color(error-200);
+    
+    .ui-alert__icon {
+      color: var(--error);
+    }
+    
+    .dark & {
+      background-color: color(error-950);
+      color: color(error-100);
+      border-color: color(error-800);
+    }
+  }
+  
+  &--info {
+    background-color: color(info-50);
+    color: color(info-900);
+    border-color: color(info-200);
+    
+    .ui-alert__icon {
+      color: var(--info);
+    }
+    
+    .dark & {
+      background-color: color(info-950);
+      color: color(info-100);
+      border-color: color(info-800);
+    }
+  }
+  
+  // Size variants
+  &--sm {
+    padding: spacing(3);
+    gap: spacing(2);
+    @include text-xs;
+    
+    .ui-alert__icon {
+      margin-top: spacing(0.25);
+      
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+    
+    .ui-alert__title {
+      @include text-xs;
+      margin-bottom: spacing(0.5);
+    }
+    
+    .ui-alert__dismiss {
+      width: spacing(4);
+      height: spacing(4);
+      
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+  
+  &--lg {
+    padding: spacing(6);
+    gap: spacing(4);
+    @include text-base;
+    
+    .ui-alert__icon {
+      margin-top: spacing(1);
+      
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    
+    .ui-alert__title {
+      @include text-base;
+      margin-bottom: spacing(2);
+    }
+    
+    .ui-alert__dismiss {
+      width: spacing(6);
+      height: spacing(6);
+      
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}
+
+// Alert list for stacking multiple alerts
+.ui-alert-list {
+  display: flex;
+  flex-direction: column;
+  gap: spacing(3);
+  
+  &--horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+// Inline alert variant
+.ui-alert--inline {
+  display: inline-flex;
+  width: auto;
+  padding: spacing(2) spacing(3);
+  gap: spacing(2);
+  @include text-xs;
+  
+  .ui-alert__icon {
+    margin-top: 0;
+    
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+  
+  .ui-alert__dismiss {
+    width: spacing(3);
+    height: spacing(3);
+    
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+// Banner alert variant (full width, no border radius)
+.ui-alert--banner {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  padding: spacing(3) spacing(4);
+  
+  @include media-up(md) {
+    padding: spacing(3) spacing(6);
+  }
+}
+

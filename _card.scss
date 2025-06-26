@@ -1,0 +1,240 @@
+// Card Component Styles
+// Modern, flexible card layout
+
+.ui-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  color: var(--card-foreground);
+  box-shadow: shadow(sm);
+  @include transition-colors;
+  
+  &:hover {
+    box-shadow: shadow(md);
+  }
+  
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: spacing(1.5);
+    padding: spacing(6);
+    
+    // If header is followed by content, reduce bottom padding
+    &:not(:last-child) {
+      padding-bottom: 0;
+    }
+  }
+  
+  &__title {
+    @include text-2xl;
+    font-weight: font-weight(semibold);
+    line-height: 1.2;
+    letter-spacing: letter-spacing(tight);
+    color: var(--card-foreground);
+    margin: 0;
+  }
+  
+  &__description {
+    @include text-sm;
+    color: var(--muted-foreground);
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  &__content {
+    padding: spacing(6);
+    
+    // If content follows header, reduce top padding
+    .ui-card__header + & {
+      padding-top: spacing(6);
+    }
+    
+    // If content is followed by footer, reduce bottom padding
+    &:not(:last-child) {
+      padding-bottom: 0;
+    }
+  }
+  
+  &__footer {
+    display: flex;
+    align-items: center;
+    padding: spacing(6);
+    
+    // If footer follows content, reduce top padding
+    .ui-card__content + & {
+      padding-top: spacing(6);
+    }
+  }
+  
+  // Card variants
+  &--elevated {
+    box-shadow: shadow(lg);
+    
+    &:hover {
+      box-shadow: shadow(xl);
+    }
+  }
+  
+  &--outlined {
+    border: 2px solid var(--border);
+    box-shadow: none;
+    
+    &:hover {
+      border-color: var(--ring);
+      box-shadow: none;
+    }
+  }
+  
+  &--ghost {
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    
+    &:hover {
+      background-color: var(--accent);
+      box-shadow: none;
+    }
+  }
+  
+  // Interactive card
+  &--interactive {
+    cursor: pointer;
+    @include transition-all;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: shadow(lg);
+    }
+    
+    &:active {
+      transform: translateY(0);
+      box-shadow: shadow(md);
+    }
+    
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+  
+  // Size variants
+  &--sm {
+    .ui-card__header,
+    .ui-card__content,
+    .ui-card__footer {
+      padding: spacing(4);
+    }
+    
+    .ui-card__header + .ui-card__content {
+      padding-top: spacing(4);
+    }
+    
+    .ui-card__content + .ui-card__footer {
+      padding-top: spacing(4);
+    }
+    
+    .ui-card__title {
+      @include text-lg;
+    }
+  }
+  
+  &--lg {
+    .ui-card__header,
+    .ui-card__content,
+    .ui-card__footer {
+      padding: spacing(8);
+    }
+    
+    .ui-card__header + .ui-card__content {
+      padding-top: spacing(8);
+    }
+    
+    .ui-card__content + .ui-card__footer {
+      padding-top: spacing(8);
+    }
+    
+    .ui-card__title {
+      @include text-3xl;
+    }
+  }
+}
+
+// Card grid layout utility
+.ui-card-grid {
+  display: grid;
+  gap: spacing(6);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  
+  &--sm {
+    gap: spacing(4);
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  &--lg {
+    gap: spacing(8);
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+  
+  // Responsive adjustments
+  @include media-down(sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Special card types
+.ui-card--feature {
+  text-align: center;
+  
+  .ui-card__header {
+    align-items: center;
+  }
+  
+  .ui-card__title {
+    @include text-3xl;
+  }
+}
+
+.ui-card--testimonial {
+  position: relative;
+  
+  &::before {
+    content: '"';
+    position: absolute;
+    top: spacing(4);
+    left: spacing(4);
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--muted-foreground);
+    opacity: 0.3;
+  }
+  
+  .ui-card__content {
+    padding-top: spacing(12);
+  }
+}
+
+.ui-card--pricing {
+  text-align: center;
+  position: relative;
+  
+  &--featured {
+    border-color: var(--primary);
+    border-width: 2px;
+    transform: scale(1.05);
+    z-index: 1;
+    
+    &::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+      padding: spacing(1) spacing(3);
+      border-radius: var(--radius);
+      @include text-sm;
+      font-weight: font-weight(medium);
+    }
+  }
+}
+

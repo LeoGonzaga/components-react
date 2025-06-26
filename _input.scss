@@ -1,0 +1,176 @@
+// Input Component Styles
+// Modern, accessible form inputs
+
+.ui-input,
+.ui-textarea {
+  display: flex;
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  color: var(--foreground);
+  @include text-sm;
+  @include transition-colors;
+  @include focus-ring;
+  
+  &::placeholder {
+    color: var(--muted-foreground);
+  }
+  
+  &:focus {
+    border-color: var(--ring);
+    outline: none;
+  }
+  
+  &:disabled,
+  &.ui-input--disabled,
+  &.ui-textarea--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: var(--muted);
+  }
+  
+  &.ui-input--error,
+  &.ui-textarea--error {
+    border-color: var(--destructive);
+    
+    &:focus {
+      border-color: var(--destructive);
+      box-shadow: 0 0 0 2px color(error-100);
+    }
+    
+    .dark & {
+      &:focus {
+        box-shadow: 0 0 0 2px color(error-900);
+      }
+    }
+  }
+}
+
+.ui-input {
+  height: spacing(10);
+  padding: 0 spacing(3);
+  
+  &[type="file"] {
+    border: 0;
+    background-color: transparent;
+    @include text-sm;
+    font-weight: font-weight(medium);
+    
+    &::file-selector-button {
+      border: 0;
+      background-color: transparent;
+      font-weight: font-weight(medium);
+      @include text-sm;
+      margin-right: spacing(2);
+      color: var(--foreground);
+    }
+    
+    &:disabled::file-selector-button {
+      opacity: 0.5;
+    }
+  }
+}
+
+.ui-textarea {
+  min-height: spacing(20);
+  padding: spacing(3);
+  resize: vertical;
+}
+
+.ui-label {
+  @include text-sm;
+  font-weight: font-weight(medium);
+  color: var(--foreground);
+  display: block;
+  margin-bottom: spacing(2);
+  
+  &__required {
+    color: var(--destructive);
+    margin-left: spacing(1);
+  }
+}
+
+.ui-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: spacing(2);
+  
+  &__error {
+    @include text-sm;
+    color: var(--destructive);
+    font-weight: font-weight(medium);
+  }
+  
+  &__helper {
+    @include text-sm;
+    color: var(--muted-foreground);
+  }
+}
+
+// Input group styles for combining inputs with buttons/icons
+.ui-input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  
+  .ui-input {
+    &:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left: 0;
+    }
+    
+    &:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    
+    &:focus {
+      z-index: 1;
+      border-left: 1px solid var(--ring);
+    }
+  }
+  
+  &__addon {
+    display: flex;
+    align-items: center;
+    padding: 0 spacing(3);
+    @include text-sm;
+    background-color: var(--muted);
+    border: 1px solid var(--border);
+    color: var(--muted-foreground);
+    
+    &:first-child {
+      border-top-left-radius: var(--radius-md);
+      border-bottom-left-radius: var(--radius-md);
+      border-right: 0;
+    }
+    
+    &:last-child {
+      border-top-right-radius: var(--radius-md);
+      border-bottom-right-radius: var(--radius-md);
+      border-left: 0;
+    }
+  }
+}
+
+// Search input with icon
+.ui-search-input {
+  position: relative;
+  
+  .ui-input {
+    padding-left: spacing(10);
+  }
+  
+  &__icon {
+    position: absolute;
+    left: spacing(3);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted-foreground);
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+

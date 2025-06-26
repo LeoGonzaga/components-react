@@ -1,0 +1,26 @@
+// Main Styles Entry Point
+// Import all styles in the correct order
+
+// 1. Design tokens
+@import 'tokens/index';
+
+// 2. Themes
+@import 'themes/light';
+@import 'themes/dark';
+
+// 3. Base styles
+@import 'base/reset';
+
+// 4. Utilities
+@import 'utils/utilities';
+
+// 5. Components
+@import 'components/button';
+@import 'components/input';
+@import 'components/typography';
+@import 'components/select';
+@import 'components/checkbox';
+@import 'components/card';
+@import 'components/alert';
+@import 'components/toast';
+

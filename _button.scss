@@ -1,0 +1,202 @@
+// Button Component Styles
+// Modern, accessible button with multiple variants
+
+.ui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  font-weight: font-weight(medium);
+  @include transition-colors;
+  @include focus-ring;
+  cursor: pointer;
+  user-select: none;
+  
+  // Disable text selection on mobile
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  
+  &:disabled,
+  &.ui-button--disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  // Size variants
+  &.ui-button--default {
+    height: spacing(10);
+    padding: 0 spacing(4);
+    @include text-sm;
+  }
+  
+  &.ui-button--sm {
+    height: spacing(9);
+    border-radius: var(--radius-md);
+    padding: 0 spacing(3);
+    @include text-xs;
+  }
+  
+  &.ui-button--lg {
+    height: spacing(11);
+    border-radius: var(--radius-md);
+    padding: 0 spacing(8);
+    @include text-base;
+  }
+  
+  &.ui-button--icon {
+    height: spacing(10);
+    width: spacing(10);
+    padding: 0;
+  }
+  
+  // Style variants
+  &.ui-button--default {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    
+    &:hover {
+      background-color: color(gray-800);
+    }
+    
+    &:active {
+      background-color: color(gray-900);
+    }
+  }
+  
+  &.ui-button--destructive {
+    background-color: var(--destructive);
+    color: var(--destructive-foreground);
+    
+    &:hover {
+      background-color: color(error-600);
+    }
+    
+    &:active {
+      background-color: color(error-700);
+    }
+  }
+  
+  &.ui-button--outline {
+    border-color: var(--border);
+    background-color: var(--background);
+    color: var(--foreground);
+    
+    &:hover {
+      background-color: var(--accent);
+      color: var(--accent-foreground);
+    }
+    
+    &:active {
+      background-color: var(--muted);
+    }
+  }
+  
+  &.ui-button--secondary {
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+    
+    &:hover {
+      background-color: color(gray-200);
+    }
+    
+    &:active {
+      background-color: color(gray-300);
+    }
+  }
+  
+  &.ui-button--ghost {
+    background-color: transparent;
+    color: var(--foreground);
+    
+    &:hover {
+      background-color: var(--accent);
+      color: var(--accent-foreground);
+    }
+    
+    &:active {
+      background-color: var(--muted);
+    }
+  }
+  
+  &.ui-button--link {
+    background-color: transparent;
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    
+    &:hover {
+      text-decoration: none;
+    }
+    
+    &:active {
+      color: color(gray-700);
+    }
+  }
+  
+  // Dark theme adjustments
+  .dark & {
+    &.ui-button--default {
+      &:hover {
+        background-color: color(gray-300);
+      }
+      
+      &:active {
+        background-color: color(gray-200);
+      }
+    }
+    
+    &.ui-button--secondary {
+      &:hover {
+        background-color: color(gray-700);
+      }
+      
+      &:active {
+        background-color: color(gray-600);
+      }
+    }
+    
+    &.ui-button--link {
+      &:active {
+        color: color(gray-300);
+      }
+    }
+  }
+  
+  // Loading state
+  &.ui-button--loading {
+    color: transparent;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      border-top-color: transparent;
+      animation: spin 1s linear infinite;
+      color: var(--primary-foreground);
+    }
+    
+    &.ui-button--outline::after,
+    &.ui-button--ghost::after,
+    &.ui-button--link::after {
+      color: var(--foreground);
+    }
+  }
+}
+
+// Spin animation for loading state
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
